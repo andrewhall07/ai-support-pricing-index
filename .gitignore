@@ -1,0 +1,6 @@
+web/node_modules
+web/dist
+web/dist-ssr
+*.local
+.DS_Store
+.vscode

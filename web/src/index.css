@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-canvas: #f7f6f3;
+  --color-surface: #ffffff;
+  --color-ink: #111111;
+  --color-ink-soft: #2f3437;
+  --color-muted: #787774;
+  --color-line: #eaeaea;
+  --color-line-strong: #d4d4d0;
+  --color-sage: #edf3ec;
+  --color-sage-ink: #346538;
+  --color-sky: #e1f3fe;
+  --color-sky-ink: #1f6c9f;
+  --color-sand: #fbf3db;
+  --color-sand-ink: #956400;
+  --color-rose: #fdebec;
+  --color-rose-ink: #9f2f2d;
+  --color-lavender: #f0edf8;
+  --color-lavender-ink: #5b4a8a;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-canvas);
+    color: var(--color-ink-soft);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01" on, "cv11" on;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-sage) 80%, transparent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
